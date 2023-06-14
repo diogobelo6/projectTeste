@@ -6,6 +6,7 @@ import DisconnectButton from "./components/DisconnectWallet";
 import qrcode from "qrcode-generator";
 import UpdateContract from "./components/UpdateContract";
 import Transfers from "./components/Transfers";
+import { Appbar } from "./components/AppBar";
 
 enum BeaconConnection {
   NONE = "",
@@ -170,6 +171,7 @@ const App = () => {
   } else if (!publicToken && !userAddress && !userBalance) {
     return (
       <div className="main-box">
+        <Appbar/>
         <div className="title">
           <h1>Taquito React template</h1>
           <a href="https://app.netlify.com/start/deploy?repository=https://github.com/ecadlabs/taquito-react-template">
@@ -212,9 +214,7 @@ const App = () => {
             wallet={wallet}
           />
         </div>
-        <div id="footer">
-          <img src="built-with-taquito.png" alt="Built with Taquito" />
-        </div>
+        
       </div>
     );
   } else {
