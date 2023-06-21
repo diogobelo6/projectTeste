@@ -7,6 +7,7 @@ import TemporaryDrawer from './Sidebar';
 import { TezosToolkit } from '@taquito/taquito';
 import { useState } from 'react';
 import ConnectButton from './ConnectWallet';
+import { Box, Button } from '@mui/material';
 
 
 
@@ -28,14 +29,22 @@ export const Appbar=()=>{
       const contractAddress: string = "KT1QMGSLynvwwSfGbaiJ8gzWHibTCweCGcu8";
 
     return(
-        <div style={{ height: '100vh', overflow: 'auto' } }>
-      <AppBar position="fixed">
-        <Toolbar>
-         <TemporaryDrawer/>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 4 }} align={'left'}>
-            News
-          </Typography>
-          <ConnectButton
+      <AppBar position="fixed" color='transparent'>
+      <Toolbar>
+      <TemporaryDrawer/>
+        <Box sx={{ marginRight: 2 }}>
+          <img src="" alt="Logo" />
+        </Box>
+        <Typography variant="h6" sx={{ flexGrow: 1}} align='left' marginLeft={5}>
+          DApp.Me
+        </Typography>
+        <Button variant="outlined" color="primary" sx={{ marginRight: 2 }}>
+          Sign Up
+        </Button>
+        <Button variant="contained" color="primary" >
+          Sign In
+        </Button>
+        <ConnectButton
             Tezos={Tezos}
             setContract={setContract}
             setPublicToken={setPublicToken}
@@ -47,9 +56,7 @@ export const Appbar=()=>{
             setBeaconConnection={setBeaconConnection}
             wallet={wallet}
           />
-        
-        </Toolbar>
-      </AppBar>
-    </div>
+      </Toolbar>
+    </AppBar>
     )
 }

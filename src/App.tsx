@@ -7,6 +7,34 @@ import qrcode from "qrcode-generator";
 import UpdateContract from "./components/UpdateContract";
 import Transfers from "./components/Transfers";
 import { Appbar } from "./components/AppBar";
+import { ThemeOptions, ThemeProvider, createTheme}  from "@mui/material/styles";
+import { TabBar } from "./components/Tab";
+import { HomePage } from "./components/home";
+
+export const themeOptions: ThemeOptions = {
+  palette: {
+    primary: {
+      main: '#fbca01',
+    },
+    secondary: {
+      main: '#c009e2',
+      dark: '#cf08f1',
+    },
+    background: {
+      default: 'rgba(19,9,28,0.76)',
+      paper: '#211e31',
+    },
+    text: {
+      primary: 'rgba(255,255,255,0.87)',
+      secondary: '#6b2913',
+    },
+  },
+  typography: {
+    fontFamily: 'Roboto Mono',
+  },
+};
+
+const theme = createTheme(themeOptions)
 
 enum BeaconConnection {
   NONE = "",
@@ -170,52 +198,12 @@ const App = () => {
     );
   } else if (!publicToken && !userAddress && !userBalance) {
     return (
-      <div className="main-box">
+      <ThemeProvider theme={theme}>
         <Appbar/>
-        <div className="title">
-          <h1>Taquito React template</h1>
-          <a href="https://app.netlify.com/start/deploy?repository=https://github.com/ecadlabs/taquito-react-template">
-            <img
-              src="https://www.netlify.com/img/deploy/button.svg"
-              alt="netlify-button"
-            />
-          </a>
-        </div>
-        <div id="dialog">
-          <header>Welcome to the Taquito React template!</header>
-          <div id="content">
-            <p>Hello!</p>
-            <p>
-              This is a template Tezos dApp built using Taquito. It's a starting
-              point for you to hack on and build your own dApp for Tezos.
-              <br />
-              If you have not done so already, go to the{" "}
-              <a
-                href="https://github.com/ecadlabs/taquito-react-template"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Taquito React template Github page
-              </a>{" "}
-              and click the <em>"Use this template"</em> button.
-            </p>
-            <p>Go forth and Tezos!</p>
-          </div>
-          <ConnectButton
-            Tezos={Tezos}
-            setContract={setContract}
-            setPublicToken={setPublicToken}
-            setWallet={setWallet}
-            setUserAddress={setUserAddress}
-            setUserBalance={setUserBalance}
-            setStorage={setStorage}
-            contractAddress={contractAddress}
-            setBeaconConnection={setBeaconConnection}
-            wallet={wallet}
-          />
-        </div>
-        
-      </div>
+        <TabBar/>
+        <HomePage/>
+        </ThemeProvider>
+      
     );
   } else {
     return <div>An error has occurred</div>;
