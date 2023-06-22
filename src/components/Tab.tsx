@@ -5,6 +5,8 @@ import IconButton from '@mui/material/IconButton';
 import { Box, Divider, Grid, Paper, Tab, Tabs } from '@mui/material';
 import React from 'react';
 import { HomePage } from './home';
+import { Token } from './token';
+import { Operations } from './operations';
 
 
 
@@ -23,8 +25,8 @@ export const TabBar = () => {
 
     const tabContents: TabContentProps[] = [
     { label: 1, component: <HomePage/> },
-    { label: 2, component: <HomePage /> },
-    { label: 3, component: <HomePage /> },
+    { label: 2, component: <Token/> },
+    { label: 3, component: <Operations/> },
   ];
     return (
             <AppBar position='fixed' color='transparent' sx={{ top:'54px' }}>
