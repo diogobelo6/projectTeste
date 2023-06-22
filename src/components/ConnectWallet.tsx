@@ -1,37 +1,39 @@
 import React, { Dispatch, SetStateAction, useState, useEffect } from "react";
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
+import { useSettings } from "../contexts/Settings";
 import {
   NetworkType,
   BeaconEvent,
   defaultEventCallbacks
 } from "@airgap/beacon-dapp";
 
-type ButtonProps = {
-  Tezos: TezosToolkit;
-  setContract: Dispatch<SetStateAction<any>>;
-  setWallet: Dispatch<SetStateAction<any>>;
-  setUserAddress: Dispatch<SetStateAction<string>>;
-  setUserBalance: Dispatch<SetStateAction<number>>;
-  setStorage: Dispatch<SetStateAction<number>>;
-  contractAddress: string;
-  setBeaconConnection: Dispatch<SetStateAction<boolean>>;
-  setPublicToken: Dispatch<SetStateAction<string | null>>;
-  wallet: BeaconWallet;
-};
+const ConnectButton = () => {
 
-const ConnectButton = ({
-  Tezos,
-  setContract,
-  setWallet,
-  setUserAddress,
-  setUserBalance,
-  setStorage,
-  contractAddress,
-  setBeaconConnection,
-  setPublicToken,
-  wallet
-}: ButtonProps): JSX.Element => {
+  const {
+    Tezos,
+    setTezos,
+    contract,
+    setContract,
+    publicToken,
+    setPublicToken,
+    wallet,
+    setWallet,
+    userAddress,
+    setUserAddress,
+    userBalance,
+    setUserBalance,
+    storage,
+    setStorage,
+    copiedPublicToken,
+    setCopiedPublicToken,
+    beaconConnection,
+    setBeaconConnection,
+    activeTab,
+    setActiveTab,
+    contractAddress
+  }= useSettings()
+
   const setup = async (userAddress: string): Promise<void> => {
     setUserAddress(userAddress);
     // updates balance

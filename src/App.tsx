@@ -10,6 +10,7 @@ import { Appbar } from "./components/AppBar";
 import { ThemeOptions, ThemeProvider, createTheme}  from "@mui/material/styles";
 import { TabBar } from "./components/Tab";
 import { HomePage } from "./components/home";
+import { useSettings } from "./contexts/Settings";
 
 export const themeOptions: ThemeOptions = {
   palette: {
@@ -45,21 +46,32 @@ enum BeaconConnection {
 }
 
 const App = () => {
-  const [Tezos, setTezos] = useState<TezosToolkit>(
-    new TezosToolkit("https://ghostnet.ecadinfra.com")
-  );
-  const [contract, setContract] = useState<any>(undefined);
-  const [publicToken, setPublicToken] = useState<string | null>(null);
-  const [wallet, setWallet] = useState<any>(null);
-  const [userAddress, setUserAddress] = useState<string>("");
-  const [userBalance, setUserBalance] = useState<number>(0);
-  const [storage, setStorage] = useState<number>(0);
-  const [copiedPublicToken, setCopiedPublicToken] = useState<boolean>(false);
-  const [beaconConnection, setBeaconConnection] = useState<boolean>(false);
-  const [activeTab, setActiveTab] = useState<string>("transfer");
-
+ 
+  const {
+    Tezos,
+    setTezos,
+    contract,
+    setContract,
+    publicToken,
+    setPublicToken,
+    wallet,
+    setWallet,
+    userAddress,
+    setUserAddress,
+    userBalance,
+    setUserBalance,
+    storage,
+    setStorage,
+    copiedPublicToken,
+    setCopiedPublicToken,
+    beaconConnection,
+    setBeaconConnection,
+    activeTab,
+    setActiveTab,
+    contractAddress
+  }= useSettings()
   // Ghostnet Increment/Decrement contract
-  const contractAddress: string = "KT1QMGSLynvwwSfGbaiJ8gzWHibTCweCGcu8";
+  
 
   const generateQrCode = (): { __html: string } => {
     const qr = qrcode(0, "L");
@@ -181,15 +193,7 @@ const App = () => {
               {(userBalance / 1000000).toLocaleString("en-US")} ꜩ
             </p>
           </div>
-          <DisconnectButton
-            wallet={wallet}
-            setPublicToken={setPublicToken}
-            setUserAddress={setUserAddress}
-            setUserBalance={setUserBalance}
-            setWallet={setWallet}
-            setTezos={setTezos}
-            setBeaconConnection={setBeaconConnection}
-          />
+          <DisconnectButton/>
         </div>
         <div id="footer">
           <img src="built-with-taquito.png" alt="Built with Taquito" />
@@ -202,6 +206,7 @@ const App = () => {
         <Appbar/>
         <TabBar/>
         <HomePage/>
+        <ConnectButton/>
         </ThemeProvider>
       
     );

@@ -1,26 +1,33 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { TezosToolkit } from "@taquito/taquito";
+import { useSettings } from "../contexts/Settings";
 
-interface ButtonProps {
-  wallet: BeaconWallet | null;
-  setPublicToken: Dispatch<SetStateAction<string | null>>;
-  setUserAddress: Dispatch<SetStateAction<string>>;
-  setUserBalance: Dispatch<SetStateAction<number>>;
-  setWallet: Dispatch<SetStateAction<any>>;
-  setTezos: Dispatch<SetStateAction<TezosToolkit>>;
-  setBeaconConnection: Dispatch<SetStateAction<boolean>>;
-}
+const DisconnectButton = () => {
+  const {
+    Tezos,
+    setTezos,
+    contract,
+    setContract,
+    publicToken,
+    setPublicToken,
+    wallet,
+    setWallet,
+    userAddress,
+    setUserAddress,
+    userBalance,
+    setUserBalance,
+    storage,
+    setStorage,
+    copiedPublicToken,
+    setCopiedPublicToken,
+    beaconConnection,
+    setBeaconConnection,
+    activeTab,
+    setActiveTab,
+    contractAddress
+  }= useSettings()
 
-const DisconnectButton = ({
-  wallet,
-  setPublicToken,
-  setUserAddress,
-  setUserBalance,
-  setWallet,
-  setTezos,
-  setBeaconConnection
-}: ButtonProps): JSX.Element => {
   const disconnectWallet = async (): Promise<void> => {
     if (wallet) {
       await wallet.clearActiveAccount();

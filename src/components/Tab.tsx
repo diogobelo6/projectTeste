@@ -2,8 +2,9 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import { Box, Divider, Tab, Tabs } from '@mui/material';
+import { Box, Divider, Grid, Paper, Tab, Tabs } from '@mui/material';
 import React from 'react';
+import { HomePage } from './home';
 
 
 
@@ -13,6 +14,18 @@ export const TabBar = () => {
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
       setValue(newValue);
     };
+    interface TabContentProps {
+        label: number;
+        component: React.ReactNode;
+      }
+      const TabContent: React.FC<TabContentProps> = ({ label, component }) =>
+    value === label ? <div>{component}</div> : null;
+
+    const tabContents: TabContentProps[] = [
+    { label: 1, component: <HomePage/> },
+    { label: 2, component: <HomePage /> },
+    { label: 3, component: <HomePage /> },
+  ];
     return (
             <AppBar position='fixed' color='transparent' sx={{ top:'54px' }}>
                     <Tabs
@@ -21,12 +34,22 @@ export const TabBar = () => {
                         aria-label="secondary tabs example"
                         value={value} 
                         onChange={handleChange}
-                        
+                        centered
                     >
-                        <Tab value="home" label="Item One"/>
-                        <Tab value="op" label="Item Two" />
-                        <Tab value="dashboard" label="Item Three" />
+                        {tabContents.map((tab) => (
+            <Tab key={tab.label} value={tab.label} label={`Item ${tab.label}`} />
+          ))}
+                        
                     </Tabs>
+                    <Grid item xs={6} md={10} marginTop={'100px'}>
+                <Paper  >
+                
+                {tabContents.map((tab) => (
+                <TabContent key={tab.label} label={tab.label} component={tab.component} />
+             ))}
+                </Paper>
+            
+                </Grid>
             </AppBar>
     )
 }
