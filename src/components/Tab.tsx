@@ -2,7 +2,7 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import { Box, Divider, Grid, Paper, Tab, Tabs } from '@mui/material';
+import { BottomNavigation, Box, Divider, Grid, Paper, Tab, Tabs } from '@mui/material';
 import React from 'react';
 import { HomePage } from './home';
 import { Token } from './token';
@@ -11,25 +11,25 @@ import { Operations } from './operations';
 
 
 export const TabBar = () => {
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = React.useState('Home');
 
-    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    const handleChange = (event: React.SyntheticEvent, newValue: string) => {
       setValue(newValue);
     };
     interface TabContentProps {
-        label: number;
+        label: string;
         component: React.ReactNode;
       }
       const TabContent: React.FC<TabContentProps> = ({ label, component }) =>
     value === label ? <div>{component}</div> : null;
 
     const tabContents: TabContentProps[] = [
-    { label: 1, component: <HomePage/> },
-    { label: 2, component: <Token/> },
-    { label: 3, component: <Operations/> },
+    { label: 'Home', component: <HomePage/> },
+    { label: 'Operations', component: <Operations/> },
+    { label: 'Wallet Info', component: <Token/> },
   ];
     return (
-            <AppBar position='fixed' color='transparent' sx={{ top:'54px' }}>
+            <AppBar position='fixed' color='transparent' sx={{ top:'64px' }}>
                     <Tabs
                         textColor="primary"
                         indicatorColor="primary"
@@ -39,19 +39,22 @@ export const TabBar = () => {
                         centered
                     >
                         {tabContents.map((tab) => (
-            <Tab key={tab.label} value={tab.label} label={`Item ${tab.label}`} />
+            <Tab key={tab.label} value={tab.label} label={`${tab.label}`} />
           ))}
                         
                     </Tabs>
-                    <Grid item xs={6} md={10} marginTop={'100px'}>
-                <Paper  >
+                    <Grid  padding={'25px'} minHeight={'82vh'} overflow={'auto'}>
+                
                 
                 {tabContents.map((tab) => (
                 <TabContent key={tab.label} label={tab.label} component={tab.component} />
              ))}
-                </Paper>
-            
+                
                 </Grid>
+                <BottomNavigation sx={{backgroundColor:'#1f2128'}}> 
+                <Typography fontSize={16}> Copyright © 2023 DApp.ME</Typography>
+                
+                </BottomNavigation>
             </AppBar>
     )
 }

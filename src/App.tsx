@@ -22,8 +22,8 @@ export const themeOptions: ThemeOptions = {
       dark: '#cf08f1',
     },
     background: {
-      default: 'rgba(19,9,28,0.76)',
-      paper: '#211e31',
+      default: '#1f2128',
+      paper: '#191b1f',
     },
     text: {
       primary: 'rgba(255,255,255,0.87)',
@@ -31,7 +31,7 @@ export const themeOptions: ThemeOptions = {
     },
   },
   typography: {
-    fontFamily: 'Roboto Mono',
+    fontFamily: 'Sawarabi Gothic',
   },
 };
 
@@ -86,8 +86,6 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <Appbar/>
         <TabBar/>
-        <HomePage/>
-        <ConnectButton/>
         </ThemeProvider>
       
     );

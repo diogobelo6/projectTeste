@@ -67,7 +67,7 @@ const ConnectButton = () => {
     (async () => {
       // creates a wallet instance
       const wallet = new BeaconWallet({
-        name: "Taquito React template",
+        name: "DApp.ME",
         preferredNetwork: NetworkType.GHOSTNET,
         disableDefaultEvents: true, // Disable all events / UI. This also disables the pairing alert.
         eventHandlers: {

@@ -36,9 +36,9 @@ export const Token=()=>{
       };
     return(
         <div className="main-box">
-        <h1>Taquito React template</h1>
+        <h1>Your info</h1>
         <div id="dialog">
-          <header>Try the Taquito React template!</header>
+          <header>Share this Token</header>
           <div id="content">
             <p className="text-align-center">
               <i className="fas fa-broadcast-tower"></i>&nbsp; Connecting to
@@ -77,9 +77,7 @@ export const Token=()=>{
             </p>
           </div>
         </div>
-        <div id="footer">
-          <img src="built-with-taquito.png" alt="Built with Taquito" />
-        </div>
+        
       </div>
 
 

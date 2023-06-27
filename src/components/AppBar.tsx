@@ -17,7 +17,7 @@ export const Appbar=()=>{
       <Toolbar>
       <TemporaryDrawer/>
         <Box sx={{ marginRight: 2 }}>
-          <img src="" alt="Logo" />
+          <img src="logo.png" alt="Logo" height={40} width={80}/>
         </Box>
         <Typography variant="h6" sx={{ flexGrow: 1}} align='left' marginLeft={5}>
           DApp.Me
