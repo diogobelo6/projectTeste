@@ -8,10 +8,15 @@ import { TezosToolkit } from '@taquito/taquito';
 import { useState } from 'react';
 import ConnectButton from './ConnectWallet';
 import { Box, Button } from '@mui/material';
+import DisconnectButton from './DisconnectWallet';
+import { useSettings } from '../contexts/Settings';
 
 
+  
 
 export const Appbar=()=>{
+  const {beaconConnection}= useSettings()
+  
     return(
       <AppBar position="fixed" color='transparent'>
       <Toolbar>
@@ -22,13 +27,13 @@ export const Appbar=()=>{
         <Typography variant="h6" sx={{ flexGrow: 1}} align='left' marginLeft={5}>
           DApp.Me
         </Typography>
-        <Button variant="outlined" color="primary" sx={{ marginRight: 2 }}>
-          Sign Up
-        </Button>
-        <Button variant="contained" color="primary" >
-          Sign In
-        </Button>
-        <ConnectButton/>
+        
+        {beaconConnection? (
+          <DisconnectButton/>
+          ):(
+            <ConnectButton/>
+        
+            )}
       </Toolbar>
     </AppBar>
     )

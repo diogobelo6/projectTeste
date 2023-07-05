@@ -31,8 +31,9 @@ export const TabBar = () => {
     return (
             <AppBar position='fixed' color='transparent' sx={{ top:'64px' }}>
                     <Tabs
-                        textColor="primary"
+                        textColor="inherit"
                         indicatorColor="primary"
+                        
                         aria-label="secondary tabs example"
                         value={value} 
                         onChange={handleChange}

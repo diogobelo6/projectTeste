@@ -12,30 +12,9 @@ import { TabBar } from "./components/Tab";
 import { HomePage } from "./components/home";
 import { useSettings } from "./contexts/Settings";
 
-export const themeOptions: ThemeOptions = {
-  palette: {
-    primary: {
-      main: '#fbca01',
-    },
-    secondary: {
-      main: '#c009e2',
-      dark: '#cf08f1',
-    },
-    background: {
-      default: '#1f2128',
-      paper: '#191b1f',
-    },
-    text: {
-      primary: 'rgba(255,255,255,0.87)',
-      secondary: '#6b2913',
-    },
-  },
-  typography: {
-    fontFamily: 'Sawarabi Gothic',
-  },
-};
 
-const theme = createTheme(themeOptions)
+
+
 
 enum BeaconConnection {
   NONE = "",
@@ -48,10 +27,7 @@ enum BeaconConnection {
 const App = () => {
  
   const {
-    Tezos,
-    setTezos,
-    contract,
-    setContract,
+   
     publicToken,
     setPublicToken,
     wallet,
@@ -83,10 +59,10 @@ const App = () => {
 
   
     return (
-      <ThemeProvider theme={theme}>
+      <div>
         <Appbar/>
         <TabBar/>
-        </ThemeProvider>
+        </div>
       
     );
 };

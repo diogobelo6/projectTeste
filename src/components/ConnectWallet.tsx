@@ -7,6 +7,7 @@ import {
   BeaconEvent,
   defaultEventCallbacks
 } from "@airgap/beacon-dapp";
+import { Button } from "@mui/material";
 
 const ConnectButton = () => {
 
@@ -69,7 +70,7 @@ const ConnectButton = () => {
       const wallet = new BeaconWallet({
         name: "DApp.ME",
         preferredNetwork: NetworkType.GHOSTNET,
-        disableDefaultEvents: true, // Disable all events / UI. This also disables the pairing alert.
+        disableDefaultEvents: false, // Disable all events / UI. This also disables the pairing alert.
         eventHandlers: {
           // To keep the pairing alert, we have to add the following default event handlers back
           [BeaconEvent.PAIR_INIT]: {
@@ -93,13 +94,9 @@ const ConnectButton = () => {
   }, []);
 
   return (
-    <div className="buttons">
-      <button className="button" onClick={connectWallet}>
-        <span>
-          <i className="fas fa-wallet"></i>&nbsp; Connect wallet
-        </span>
-      </button>
-    </div>
+      <Button variant="contained" onClick={connectWallet}>
+           Connect wallet
+      </Button>
   );
 };
 

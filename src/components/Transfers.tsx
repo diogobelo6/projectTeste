@@ -1,5 +1,6 @@
 import React, { useState, Dispatch, SetStateAction } from "react";
 import { TezosToolkit } from "@taquito/taquito";
+import { Button, Grid, TextField, Typography } from "@mui/material";
 
 const Transfers = ({
   Tezos,
@@ -18,9 +19,7 @@ const Transfers = ({
     if (recipient && amount) {
       setLoading(true);
       try {
-        const op = await Tezos.wallet
-          .transfer({ to: recipient, amount: parseInt(amount) })
-          .send();
+        const op = await Tezos.wallet.transfer({ to: recipient, amount: parseInt(amount) }).send();
         await op.confirmation();
         setRecipient("");
         setAmount("");
@@ -34,36 +33,66 @@ const Transfers = ({
     }
   };
 
+
   return (
-    <div id="transfer-inputs">
-      <input
-        type="text"
-        placeholder="Recipient"
-        value={recipient}
-        onChange={e => setRecipient(e.target.value)}
-      />
-      <input
-        type="number"
-        placeholder="Amount"
-        value={amount}
-        onChange={e => setAmount(e.target.value)}
-      />
-      <button
-        className="button"
+    <Grid container
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+      spacing={8}
+      sx={{borderBlockColor:'inherit'}}
+      >
+        <Grid item>
+        <Typography variant="h4">Make a transfer</Typography>
+        </Grid>
+        <Grid item xs={7}>
+          <TextField
+            type="text"
+            id="recepient"
+            label="Recepient"
+            variant="outlined"
+            onChange={e => setRecipient(e.target.value)}
+            focused
+            InputProps={{
+              style: { color: 'inherit' }
+            }}
+          />
+          
+        </Grid>
+        <Grid item>
+          <TextField
+            type="number"
+            id="amount"
+            label="Amount"
+            variant="outlined"
+            onChange={e => setAmount(e.target.value)}
+            focused
+            InputProps={{
+              style: { color: 'inherit' }
+            }}
+          />
+        </Grid>
+      
+      <Grid item>
+      <Button
+        variant="contained"
         disabled={!recipient && !amount}
         onClick={sendTransfer}
       >
         {loading ? (
-          <span>
-            <i className="fas fa-spinner fa-spin"></i>&nbsp; Please wait
-          </span>
+          
+            <Typography>Please wait</Typography> 
+          
         ) : (
-          <span>
-            <i className="far fa-paper-plane"></i>&nbsp; Send
-          </span>
+          
+             <Typography>Send</Typography>
+          
         )}
-      </button>
-    </div>
+      </Button>
+      </Grid>
+     
+        
+    </Grid>
   );
 };
 

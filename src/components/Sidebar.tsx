@@ -45,7 +45,7 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {['Home', 'Transfers', 'SmartContract', 'Wallet Info'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -54,20 +54,16 @@ export default function TemporaryDrawer() {
               <ListItemText primary={text} />
             </ListItemButton>
           </ListItem>
+          
         ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
+        <ListItem key={'Home'} disablePadding>
+            <ListItemButton >
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                
               </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
+              <ListItemText primary={'Home'} />
+            </ListItemButton >
           </ListItem>
-        ))}
       </List>
     </Box>
   );
@@ -86,7 +82,6 @@ export default function TemporaryDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Button ></Button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}

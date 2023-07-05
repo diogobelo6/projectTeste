@@ -1,15 +1,23 @@
 import React, { useState, Dispatch, SetStateAction } from "react";
 import { TezosToolkit, WalletContract } from "@taquito/taquito";
+import { Grid, Typography, Button } from "@mui/material";
+import { useSettings } from "../contexts/Settings";
+import ConnectButton from "./ConnectWallet";
 
-interface UpdateContractProps {
-  contract: WalletContract | any;
-  setUserBalance: Dispatch<SetStateAction<any>>;
-  Tezos: TezosToolkit;
-  userAddress: string;
-  setStorage: Dispatch<SetStateAction<number>>;
-}
 
-const UpdateContract = ({ contract, setUserBalance, Tezos, userAddress, setStorage }: UpdateContractProps) => {
+
+const UpdateContract = () => {
+  const {
+    contract,
+    contractAddress,
+    Tezos,
+    userAddress,
+    setUserBalance,
+    setStorage,
+    storage
+  }= useSettings()
+
+
   const [loadingIncrement, setLoadingIncrement] = useState<boolean>(false);
   const [loadingDecrement, setLoadingDecrement] = useState<boolean>(false);
 
@@ -43,32 +51,75 @@ const UpdateContract = ({ contract, setUserBalance, Tezos, userAddress, setStora
     }
   };
 
-  if (!contract && !userAddress) return <div>&nbsp;</div>;
+  if (!contract && !userAddress) return (<Grid>
+  <Typography variant="h4">Please connect your Wallet</Typography>
+  <ConnectButton/>
+  </Grid>
+  );
   return (
-    <div className="buttons">
-      <button className="button" disabled={loadingIncrement} onClick={increment}>
-        {loadingIncrement ? (
-          <span>
-            <i className="fas fa-spinner fa-spin"></i>&nbsp; Please wait
-          </span>
-        ) : (
-          <span>
-            <i className="fas fa-plus"></i>&nbsp; Increment by 1
-          </span>
-        )}
-      </button>
-      <button className="button" onClick={decrement}>
-        {loadingDecrement ? (
-          <span>
-            <i className="fas fa-spinner fa-spin"></i>&nbsp; Please wait
-          </span>
-        ) : (
-          <span>
-            <i className="fas fa-minus"></i>&nbsp; Decrement by 1
-          </span>
-        )}
-      </button>
-    </div>
+    
+    <Grid container
+    direction="column"
+    justifyContent="center"
+    alignItems="center"
+    spacing={8}
+    sx={{borderBlockColor:'inherit'}}
+    >
+      <Grid item>
+      <Typography variant="h4">Smart Contract</Typography>
+      <Typography>Current counter: {storage} </Typography>
+      </Grid>
+      <Grid item xs={7}>
+      <Button
+      variant="contained"
+      onClick={decrement}
+    >
+      {loadingDecrement ? (
+        
+          <Typography>Please wait</Typography> 
+        
+      ) : (
+        
+           <Typography>Decrement by 1</Typography>
+        
+      )}
+    </Button>
+      <Button
+      variant="contained"
+      onClick={increment}
+    >
+      {loadingIncrement ? (
+        
+          <Typography>Please wait</Typography> 
+        
+      ) : (
+        
+           <Typography>Increment by 1</Typography>
+        
+      )}
+    </Button>
+        
+      </Grid>
+      <Grid item>
+        
+      </Grid>
+    
+    <Grid item>
+          <p>
+                <i className="far fa-file-code"></i>&nbsp;
+                <a
+                  href={`https://better-call.dev/ghostnet/${contractAddress}/operations`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {contractAddress}
+                </a>
+              </p>
+    
+    </Grid>
+   
+      
+  </Grid>
   );
 };
 

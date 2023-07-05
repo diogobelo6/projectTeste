@@ -29,6 +29,7 @@ export const Operations=()=>{
         setActiveTab,
         contractAddress
       }= useSettings()
+      
     return(
 <Grid container rowSpacing={6} marginTop={'10px'} direction={'row'} justifyContent="space-between">
             
@@ -52,67 +53,38 @@ export const Operations=()=>{
            
             </Grid>
             
-            <Grid container item xs={6}>
+            <Grid container item xs justifyContent={"center"}>
             {activeTab === "transfer" ? (
-                <div id="transfers">
-                  <h3 className="text-align-center">Make a transfer</h3>
+                <Grid item>
+                 
                   <Transfers
                     Tezos={Tezos}
                     setUserBalance={setUserBalance}
                     userAddress={userAddress}
                   />
-                </div>
+              </Grid>
               ) : (
-                <div id="increment-decrement">
-                  <h3 className="text-align-center">
-                    Current counter: <span>{storage}</span>
-                  </h3>
-                  <UpdateContract
-                    contract={contract}
-                    setUserBalance={setUserBalance}
-                    Tezos={Tezos}
-                    userAddress={userAddress}
-                    setStorage={setStorage}
-                  />
-                </div>
+                <Grid item justifyContent={"center"}>
+                  
+                  <UpdateContract/>
+                </Grid>
               )}
-                  <p>
-                <i className="far fa-file-code"></i>&nbsp;
-                <a
-                  href={`https://better-call.dev/ghostnet/${contractAddress}/operations`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {contractAddress}
-                </a>
-              </p>
-              <p>
-                <i className="far fa-address-card"></i>&nbsp; {userAddress}
-              </p>
-              <p>
-                <i className="fas fa-piggy-bank"></i>&nbsp;
-                {(userBalance / 1000000).toLocaleString("en-US")} ꜩ
-              </p>
-              <DisconnectButton/>
-            <Button variant="contained" color="primary">
-                Get Started
-              </Button>
+                 
+              
+            
   
             </Grid>
-            <Grid container item xs direction={"column"} justifyContent={"flex-start"} alignItems={"center"} columnSpacing={5}>
             
-              <Grid item justifyContent={"center"}>
+            <Grid container item xs={2}  justifyContent={"flex-start"} alignItems={"flex-start"}  >
+            
+              <Grid item  columnSpacing={4}>
                 
                 <Typography variant="h5"> Your Balance</Typography>
                 <Typography variant="h6"> {(userBalance / 1000000).toLocaleString("en-US")} ꜩ </Typography>
                 
               </Grid>
-              <Grid item justifyContent={"center"}>
-                
-                <Typography variant="h5"> Your Address</Typography>
-                <Typography variant="h6"> {beaconConnection ? (userAddress): "Not Connected"} </Typography>
-                
-              </Grid>
+              
+              
         </Grid>
         
       </Grid>

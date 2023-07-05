@@ -2,6 +2,7 @@ import React, { Dispatch, SetStateAction } from "react";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { TezosToolkit } from "@taquito/taquito";
 import { useSettings } from "../contexts/Settings";
+import { Button } from "@mui/material";
 
 const DisconnectButton = () => {
   const {
@@ -42,11 +43,13 @@ const DisconnectButton = () => {
   };
 
   return (
-    <div className="buttons">
-      <button className="button" onClick={disconnectWallet}>
-        <i className="fas fa-times"></i>&nbsp; Disconnect wallet
-      </button>
-    </div>
+    
+      <Button
+      variant="outlined"  
+      onClick={disconnectWallet}>
+         Disconnect wallet
+      </Button>
+    
   );
 };
 
