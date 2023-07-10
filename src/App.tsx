@@ -59,7 +59,7 @@ const App = () => {
 
   
     return (
-      <div>
+      <div  style={{ height: '400px', overflowY: 'scroll', overflowX:"hidden"}}>
         <Appbar/>
         <TabBar/>
         </div>

@@ -69,7 +69,7 @@ const UpdateContract = () => {
       <Typography variant="h4">Smart Contract</Typography>
       <Typography>Current counter: {storage} </Typography>
       </Grid>
-      <Grid item xs={7}>
+      <Grid item xs={7} spacing={4}>
       <Button
       variant="contained"
       onClick={decrement}

@@ -70,7 +70,7 @@ const ConnectButton = () => {
       const wallet = new BeaconWallet({
         name: "DApp.ME",
         preferredNetwork: NetworkType.GHOSTNET,
-        disableDefaultEvents: false, // Disable all events / UI. This also disables the pairing alert.
+        disableDefaultEvents: false, 
         eventHandlers: {
           // To keep the pairing alert, we have to add the following default event handlers back
           [BeaconEvent.PAIR_INIT]: {

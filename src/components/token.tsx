@@ -80,7 +80,7 @@ export const Token=()=>{
     border: '1px solid gray'}}>
           <CardContent>
            <Typography variant="h5">Wallet Address:</Typography>
-           <Typography>  </Typography>
+           <Typography>{userAddress}</Typography>
           </CardContent>
         </Card>
       </Grid>
