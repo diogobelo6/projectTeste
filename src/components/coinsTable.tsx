@@ -126,7 +126,7 @@ export default function CoinsTable() {
                           style={{
                             display: "flex",
                             gap: 15,
-                            
+                            color:"#ffffff"
                           }}
                         >
                           <img
@@ -152,7 +152,7 @@ export default function CoinsTable() {
                             </span>
                           </div>
                         </TableCell>
-                        <TableCell align="right">
+                        <TableCell align="right" style={{color:"#ffffff"}}>
                           {symbol}{" "}
                           {numberWithCommas(row.current_price.toFixed(2))}
                         </TableCell>
@@ -166,7 +166,7 @@ export default function CoinsTable() {
                           {profit && "+"}
                           {row.price_change_percentage_24h.toFixed(2)}%
                         </TableCell>
-                        <TableCell align="right">
+                        <TableCell align="right" style={{color:"#ffffff"}}>
                           {symbol}{" "}
                           {numberWithCommas(
                             row.market_cap.toString().slice(0, -6)

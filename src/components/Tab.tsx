@@ -44,7 +44,7 @@ export const TabBar = () => {
           ))}
                         
                     </Tabs>
-                    <Grid  padding={'25px'} minHeight={'82vh'} overflow={'auto'} >
+                    <Grid  padding={'25px'} style={{ height: '82vh', overflowY: 'scroll', overflowX:"hidden"}} >
                 
                 
                 {tabContents.map((tab) => (
