@@ -89,8 +89,11 @@ const Transfers = ({
           
         )}
       </Button>
-      </Grid>
-     
+        </Grid>
+     <Grid item justifyContent={"flex-start"} >
+      <Typography variant="h6">Wallet Address: {userAddress}</Typography>
+           
+     </Grid>
         
     </Grid>
   );

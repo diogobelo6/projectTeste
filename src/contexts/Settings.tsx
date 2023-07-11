@@ -18,7 +18,7 @@ export const SettingsProvider: React.FC<SettingsProviderProps>= ({children}) => 
     const [storage, setStorage] = useState<number>(0);
     const [copiedPublicToken, setCopiedPublicToken] = useState<boolean>(false);
     const [beaconConnection, setBeaconConnection] = useState<boolean>(false);
-    const [activeTab, setActiveTab] = useState<string>("transfer");
+    const [activeTab, setActiveTab] = useState<string>("contract");
     const contractAddress: string = "KT1QMGSLynvwwSfGbaiJ8gzWHibTCweCGcu8";
   
     return (
