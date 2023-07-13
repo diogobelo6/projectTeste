@@ -11,6 +11,7 @@ export const useSettings = () => useContext(SettingsContext);
 export const SettingsProvider: React.FC<SettingsProviderProps>= ({children}) => {
     const [Tezos,setTezos] = useState<TezosToolkit>(new TezosToolkit("https://ghostnet.ecadinfra.com"));
     const [contract, setContract] = useState<any>(undefined);
+    const [contractFA12, setContractFA12] = useState<any>(undefined);
     const [publicToken, setPublicToken] = useState<string | null>(null);
     const [wallet, setWallet] = useState<any>(null);
     const [userAddress, setUserAddress] = useState<string>("");
@@ -20,7 +21,7 @@ export const SettingsProvider: React.FC<SettingsProviderProps>= ({children}) => 
     const [beaconConnection, setBeaconConnection] = useState<boolean>(false);
     const [activeTab, setActiveTab] = useState<string>("contract");
     const contractAddress: string = "KT1QMGSLynvwwSfGbaiJ8gzWHibTCweCGcu8";
-  
+    const contractAddressFA12: string = "KT1L5FTSf1xRwwry9NNFeNPcxjVJGEN2PGC1";
     return (
       <SettingsContext.Provider
         value={{
@@ -44,7 +45,10 @@ export const SettingsProvider: React.FC<SettingsProviderProps>= ({children}) => 
           setBeaconConnection,
           activeTab,
           setActiveTab,
-          contractAddress
+          contractAddress,
+          contractFA12,
+          setContractFA12,
+          contractAddressFA12
         }}
       >
         {children}

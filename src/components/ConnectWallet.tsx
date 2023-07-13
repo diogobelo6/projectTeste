@@ -13,9 +13,8 @@ const ConnectButton = () => {
 
   const {
     Tezos,
-    setTezos,
-    contract,
     setContract,
+    setContractFA12,
     publicToken,
     setPublicToken,
     wallet,
@@ -32,7 +31,8 @@ const ConnectButton = () => {
     setBeaconConnection,
     activeTab,
     setActiveTab,
-    contractAddress
+    contractAddress,
+    contractAddressFA12
   }= useSettings()
 
   const setup = async (userAddress: string): Promise<void> => {
@@ -45,6 +45,10 @@ const ConnectButton = () => {
     const storage: any = await contract.storage();
     setContract(contract);
     setStorage(storage.toNumber());
+
+    //create fa12 Smart Contract
+    const contractFA12 = await Tezos.wallet.at(contractAddressFA12);
+    setContract(contractFA12);
   };
 
   const connectWallet = async (): Promise<void> => {

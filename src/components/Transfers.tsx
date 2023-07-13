@@ -79,15 +79,7 @@ const Transfers = ({
         disabled={!recipient && !amount}
         onClick={sendTransfer}
       >
-        {loading ? (
-          
-            <Typography>Please wait</Typography> 
-          
-        ) : (
-          
              <Typography>Send</Typography>
-          
-        )}
       </Button>
         </Grid>
      <Grid item justifyContent={"flex-start"} >

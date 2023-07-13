@@ -33,7 +33,7 @@ export function numberWithCommas(x:any){
 
 export default function CoinsTable() {
   const [coins, setCoins] = useState<Coin[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loadingT, setLoadingT] = useState(false);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const currency= "USD";
@@ -45,12 +45,12 @@ export default function CoinsTable() {
   
 
   const fetchCoins = async () => {
-    setLoading(true);
+    setLoadingT(true);
     const { data } = await axios.get(CoinList(currency));
     console.log(data);
 
     setCoins(data);
-    setLoading(false);
+    setLoadingT(false);
   };
 
   useEffect(() => {
@@ -86,7 +86,7 @@ export default function CoinsTable() {
           }}
         />
         <TableContainer component={Paper}>
-          {loading ? (
+          {loadingT ? (
             <LinearProgress style={{ backgroundColor: "primary" }} />
           ) : (
             <Table aria-label="simple table">
