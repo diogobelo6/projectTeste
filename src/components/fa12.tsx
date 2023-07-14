@@ -20,24 +20,9 @@ const FA12 = () => {
 
   const [recipient, setRecipient] = useState<string>("");
   const [amount, setAmount] = useState<string>("");
-  const [loadingIncrement, setLoadingIncrement] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const increment = async (): Promise<void> => {
-    setLoadingIncrement(true);
-    try {
-      const op = await contractFA12.methods.transfers().increment(1).send();
-      await contractFA12.methods.transfer({ from: userAddress, to: userAddress, nat: parseInt("1231") }).send();
-      await op.confirmation();
-      const newStorage: any = await contractFA12.storage();
-      if (newStorage) setStorage(newStorage.toNumber());
-      setUserBalance(await Tezos.tz.getBalance(userAddress));
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoadingIncrement(false);
-    }
-  };
+  
 
   const sendTransfer = async (): Promise<void> => {
     if (recipient && amount) {

@@ -27,24 +27,7 @@ enum BeaconConnection {
 const App = () => {
  
   const {
-   
     publicToken,
-    setPublicToken,
-    wallet,
-    setWallet,
-    userAddress,
-    setUserAddress,
-    userBalance,
-    setUserBalance,
-    storage,
-    setStorage,
-    copiedPublicToken,
-    setCopiedPublicToken,
-    beaconConnection,
-    setBeaconConnection,
-    activeTab,
-    setActiveTab,
-    contractAddress
   }= useSettings()
   // Ghostnet Increment/Decrement contract
   
