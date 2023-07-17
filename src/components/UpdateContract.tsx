@@ -15,7 +15,7 @@ const UpdateContract = () => {
     setUserBalance,
     setStorage,
     storage
-  }= useSettings()
+  } = useSettings()
 
 
   const [loadingIncrement, setLoadingIncrement] = useState<boolean>(false);
@@ -52,75 +52,78 @@ const UpdateContract = () => {
   };
 
   if (!contract && !userAddress) return (<Grid>
-  <Typography variant="h4">Please connect your Wallet</Typography>
-  <ConnectButton/>
+    <Typography variant="h4">Please connect your Wallet</Typography>
+    <ConnectButton />
   </Grid>
   );
   return (
-    
+
     <Grid container
-    direction="column"
-    justifyContent="center"
-    alignItems="center"
-    spacing={8}
-    sx={{borderBlockColor:'inherit'}}
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+      spacing={8}
+      sx={{ borderBlockColor: 'inherit' }}
     >
       <Grid item>
-      <Typography variant="h4">Smart Contract</Typography>
-      <Typography>Current counter: {storage} </Typography>
+        <Typography variant="h4">Smart Contract</Typography>
+        <Typography>Current counter: {storage} </Typography>
       </Grid>
-      <Grid item xs={7} spacing={4}>
-      <Button
-      variant="contained"
-      onClick={decrement}
-    >
-      {loadingDecrement ? (
-        
-          <Typography>Please wait</Typography> 
-        
-      ) : (
-        
-           <Typography>Decrement by 1</Typography>
-        
-      )}
-    </Button>
-      <Button
-      variant="contained"
-      onClick={increment}
-    >
-      {loadingIncrement ? (
-        
-          <Typography>Please wait</Typography> 
-        
-      ) : (
-        
-           <Typography>Increment by 1</Typography>
-        
-      )}
-    </Button>
-        
-      </Grid>
-      <Grid item>
-        
-      </Grid>
-    
-    <Grid item>
+      <Grid container item direction="row" alignItems="center" justifyContent={"space-around"}>
+        <Grid item >
+          <Button
+            variant="contained"
+            onClick={decrement}
+          >
+            {loadingDecrement ? (
+
+              <Typography>Please wait</Typography>
+
+            ) : (
+
+              <Typography>Decrement by 1</Typography>
+
+            )}
+          </Button>
+          </Grid>
+          <Grid item >
+          <Button
+            variant="contained"
+            onClick={increment}
+          >
+            {loadingIncrement ? (
+
+              <Typography>Please wait</Typography>
+
+            ) : (
+
+              <Typography>Increment by 1</Typography>
+
+            )}
+          </Button>
+          </Grid>
+        </Grid>
+        <Grid item>
+
+        </Grid>
+
+        <Grid item>
           <p>
-                <i className="far fa-file-code"></i>&nbsp;
-                <a
-                  href={`https://better-call.dev/ghostnet/${contractAddress}/operations`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {contractAddress}
-                </a>
-              </p>
-    
-    </Grid>
-   
-      
-  </Grid>
-  );
+            <i className="far fa-file-code"></i>&nbsp;
+            <a
+              href={`https://better-call.dev/ghostnet/${contractAddress}/operations`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {contractAddress}
+            </a>
+          </p>
+
+        </Grid>
+
+
+      </Grid>
+      );
 };
 
-export default UpdateContract;
+      export default UpdateContract;

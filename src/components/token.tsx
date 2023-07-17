@@ -4,27 +4,9 @@ import qrcode from "qrcode-generator";
 
 export const Token = () => {
   const {
-    Tezos,
-    setTezos,
-    contract,
-    setContract,
     publicToken,
-    setPublicToken,
-    wallet,
-    setWallet,
-    userAddress,
-    setUserAddress,
-    userBalance,
-    setUserBalance,
-    storage,
-    setStorage,
     copiedPublicToken,
     setCopiedPublicToken,
-    beaconConnection,
-    setBeaconConnection,
-    activeTab,
-    setActiveTab,
-    contractAddress
   } = useSettings()
 
 
@@ -35,6 +17,7 @@ export const Token = () => {
 
     return { __html: qr.createImgTag(4) };
   };
+  
   return (
     <div>
       <Typography

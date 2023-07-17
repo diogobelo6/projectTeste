@@ -14,23 +14,13 @@ const ConnectButton = () => {
   const {
     Tezos,
     setContract,
-    setContractFA12,
-    publicToken,
     setPublicToken,
     wallet,
     setWallet,
-    userAddress,
     setUserAddress,
-    userBalance,
     setUserBalance,
-    storage,
     setStorage,
-    copiedPublicToken,
-    setCopiedPublicToken,
-    beaconConnection,
     setBeaconConnection,
-    activeTab,
-    setActiveTab,
     contractAddress,
     contractAddressFA12
   }= useSettings()
